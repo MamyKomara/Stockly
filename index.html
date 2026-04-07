@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stockly — Prototype mobile</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <section class="prototype-frame">
+        <header class="app-header">
+          <div>
+            <p class="eyebrow">Prototype cliquable</p>
+            <h1>Stockly</h1>
+          </div>
+          <span class="badge" id="active-role">Non connecté</span>
+        </header>
+
+        <section class="screen active" data-screen="login">
+          <h2>Connexion</h2>
+          <p class="muted">Choisissez un rôle pour voir l'interface adaptée.</p>
+
+          <label class="field">
+            Numéro de téléphone
+            <input type="tel" placeholder="+221 77 000 00 00" />
+          </label>
+
+          <label class="field">
+            Mot de passe
+            <input type="password" placeholder="••••••••" />
+          </label>
+
+          <label class="field">
+            Rôle
+            <select id="role-selector">
+              <option value="owner">Propriétaire</option>
+              <option value="seller">Vendeuse</option>
+            </select>
+          </label>
+
+          <button id="login-btn" class="btn primary">Se connecter</button>
+        </section>
+
+        <section class="screen" data-screen="dashboard">
+          <h2>Tableau de bord</h2>
+          <div class="kpi-grid" id="dashboard-cards"></div>
+        </section>
+
+        <section class="screen" data-screen="products">
+          <h2>Produits / Stock</h2>
+          <div class="stack" id="products-list"></div>
+          <div class="actions-row">
+            <button class="btn primary" data-screen-target="add-product">➕ Ajouter</button>
+            <button class="btn">✏️ Modifier</button>
+            <button class="btn">📸 Photo</button>
+          </div>
+        </section>
+
+        <section class="screen" data-screen="add-product">
+          <h2>Ajouter un produit</h2>
+          <label class="field">Nom <input type="text" placeholder="Ex: Huile 1L" /></label>
+          <label class="field">Prix <input type="number" placeholder="Ex: 2500" /></label>
+          <label class="field">Quantité <input type="number" placeholder="Ex: 12" /></label>
+          <label class="field">Photo obligatoire <input type="file" /></label>
+          <button class="btn primary">Enregistrer</button>
+        </section>
+
+        <section class="screen" data-screen="sale">
+          <h2>Vente</h2>
+          <label class="field">
+            Produit
+            <select id="sale-product"></select>
+          </label>
+          <label class="field">Quantité <input id="sale-qty" type="number" min="1" value="1" /></label>
+          <button id="confirm-sale" class="btn primary">Confirmer vente</button>
+          <p class="muted" id="sale-feedback"></p>
+        </section>
+
+        <section class="screen" data-screen="history">
+          <h2>Historique</h2>
+          <ul class="timeline" id="history-list"></ul>
+        </section>
+
+        <section class="screen" data-screen="alerts">
+          <h2>Alertes</h2>
+          <div class="stack" id="alerts-list"></div>
+        </section>
+
+        <section class="screen" data-screen="inventory">
+          <h2>Inventaire rapide</h2>
+          <p class="muted">Compare le stock réel avec le stock système en fin de journée.</p>
+          <button class="btn">Comparer stock système</button>
+          <button class="btn">📸 Ajouter photo inventaire</button>
+          <button class="btn primary">Valider inventaire</button>
+        </section>
+
+        <section class="screen" data-screen="profile">
+          <h2>Profil utilisateur</h2>
+          <article class="profile-card" id="profile-card"></article>
+        </section>
+
+        <nav class="tabbar">
+          <button class="tab active" data-screen="dashboard">Accueil</button>
+          <button class="tab" data-screen="products">Stock</button>
+          <button class="tab" data-screen="sale">Vente</button>
+          <button class="tab" data-screen="history">Journal</button>
+          <button class="tab" data-screen="profile">Profil</button>
+        </nav>
+      </section>
+
+      <aside class="side-panel">
+        <h3>Écrans inclus</h3>
+        <ol>
+          <li>Connexion</li>
+          <li>Tableau de bord</li>
+          <li>Produits / Stock</li>
+          <li>Ajouter un produit</li>
+          <li>Vente</li>
+          <li>Historique</li>
+          <li>Alertes</li>
+          <li>Inventaire rapide</li>
+          <li>Profil utilisateur</li>
+        </ol>
+        <p class="muted">
+          Démo: connectez-vous, validez une vente, puis allez dans “Journal” et “Alertes” pour voir les mises à jour.
+        </p>
+      </aside>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
